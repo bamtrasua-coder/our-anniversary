@@ -184,6 +184,138 @@
                 document.getElementById("timer").innerHTML = "Hôm nay là ngày đặc biệt!";
             }
         }, 1000);
+    </script><!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lời mời kỷ niệm 1 năm - Peter & GiGi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@300;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-pink: #ff85a2;
+            --dark-pink: #f73378;
+            --glass: rgba(255, 255, 255, 0.25);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(135deg, #ffafbd 0%, #ffc3a0 100%);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .heart-bg {
+            position: absolute;
+            top: -10%;
+            color: rgba(255, 105, 180, 0.3);
+            font-size: 20px;
+            animation: move linear infinite;
+            z-index: 0;
+        }
+
+        @keyframes move {
+            to { transform: translateY(110vh) rotate(360deg); }
+        }
+
+        /* Container cho các slide */
+        .card {
+            background: var(--glass);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 30px;
+            padding: 40px;
+            width: 90%;
+            max-width: 450px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            z-index: 10;
+            color: #fff;
+            position: relative;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        h1 { font-family: 'Dancing Script', cursive; font-size: 2.8rem; margin: 10px 0; }
+        .hidden { display: none !important; }
+
+        .btn {
+            background: #fff;
+            color: var(--dark-pink);
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2rem;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .btn:hover { transform: scale(1.1); background: var(--dark-pink); color: #fff; }
+
+        /* Hiệu ứng chuyển slide */
+        .fade-in { animation: fadeIn 1s ease-in; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        .date-info { font-size: 1.3rem; margin: 20px 0; color: #fff; font-weight: bold; }
+        .secret-location { font-style: italic; color: #fff; opacity: 0.9; }
+    </style>
+</head>
+<body>
+
+    <div class="card" id="mainCard">
+        <div id="slide1" class="fade-in">
+            <h1>Dear GiGi... ❤️</h1>
+            <p style="font-size: 1.2rem;">Một năm qua với Peter thật tuyệt vời.</p>
+            <p>Bạn có đồng ý cùng Peter kỷ niệm 1 năm ngày chúng ta thuộc về nhau không?</p>
+            <button class="btn" onclick="showSlide2()">ĐỒNG Ý ❤️</button>
+        </div>
+
+        <div id="slide2" class="hidden fade-in">
+            <h1>Yesss! ❤️</h1>
+            <p>Tuyệt vời quá! Chúc mừng Anniversary 1 năm của hai đứa mình!</p>
+            <div class="date-info">📅 04 / 05 / 2026</div>
+            <p class="secret-location">📍 Địa điểm: Sẽ được bật mí vào phút chót! 😉</p>
+            <p style="margin-top: 20px;">Hẹn gặp em vào ngày đặc biệt đó nhé, Peter yêu GiGi rất nhiều!</p>
+        </div>
+    </div>
+
+    <script>
+        // Hiệu ứng trái tim bay
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart-bg');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.animationDuration = Math.random() * 3 + 2 + "s";
+            document.body.appendChild(heart);
+            setTimeout(() => { heart.remove(); }, 5000);
+        }
+        setInterval(createHeart, 250);
+
+        // Hàm chuyển slide
+        function showSlide2() {
+            document.getElementById('slide1').classList.add('hidden');
+            document.getElementById('slide2').classList.remove('hidden');
+            
+            // Tạo hiệu ứng "pháo hoa" trái tim khi nhấn nút
+            for(let i=0; i<20; i++) {
+                setTimeout(createHeart, i * 50);
+            }
+        }
     </script>
+</body>
+</html>
+    
 </body>
 </html>
